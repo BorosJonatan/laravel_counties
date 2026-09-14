@@ -26,7 +26,7 @@
             <td>{{ $city->name }}</td>
             <td>{{ $city->county->name }}</td>
             <td>{{ $city->zip_code }}</td>
-            <td>{{ $city->population }}</td>
+            <td>{{ number_format($city->population, 0, '.', ' ') }}</td>
             <td class="actions">
                 <a class="button secondary" href="{{ route('cities.show', $city->id) }}">View</a>
                 <a class="button" href="{{ route('cities.edit', $city->id) }}">Edit</a>

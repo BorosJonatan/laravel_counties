@@ -23,7 +23,18 @@
             <input type="text" id="zip_code" name="zip_code" value="{{ old('zip_code', $city->zip_code) }}" required>
             <label for="population">Population</label>
             <input type="text" id="population" name="population" value="{{ old('population', $city->population) }}" required>
-
+            <script>
+                const population = document.getElementById('population');
+                function formatNumber(value) {
+                    return value
+                        .replace(/\D/g, '')
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+                }
+                population.value = formatNumber(population.value);
+                population.addEventListener('input', function () {
+                    this.value = formatNumber(this.value);
+                });
+            </script>
             <div class="actions">
                 <button type="submit">Save city</button>
                 <a class="button secondary" href="{{ route('cities.index') }}">Cancel</a>

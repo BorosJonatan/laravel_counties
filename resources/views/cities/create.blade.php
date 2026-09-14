@@ -22,6 +22,14 @@
             <input type="text" id="zip_code" name="zip_code" value="{{ old('zip_code') }}" required>
             <label for="population">Population</label>
             <input type="text" id="population" name="population" value="{{ old('population') }}" required>
+            <script>
+                const population = document.getElementById('population');
+                population.addEventListener('input', function () {
+                    let value = this.value.replace(/\D/g, '');
+            
+                    this.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+                });
+            </script>
 
             <div class="actions">
                 <button type="submit">Save city</button>

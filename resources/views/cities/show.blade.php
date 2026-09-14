@@ -8,7 +8,7 @@
     <label>Zip code:</label>
     <p>{{ $city->zip_code}}</p>
     <label>Population:</label>
-    <p>{{ $city->population}}</p>
+    <p>{{ number_format($city->population, 0, '.', ' ')}}</p>
 </div>
 
 @endsection
