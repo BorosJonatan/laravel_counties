@@ -17,7 +17,8 @@ class City extends Model
     protected $fillable = [
         'name',
         'zip_code',
-        'county_id'
+        'county_id',
+        'population'
     ];
 
     /**

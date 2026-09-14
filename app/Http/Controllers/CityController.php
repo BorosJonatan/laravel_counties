@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $cities = City::with('county')->get();
+        $query = City::query();
+
+        if ($request->filled('needle')) {
+            $query->where('name', 'like', '%' . $request->needle . '%');
+        }
+        
+        $cities = $query
+        ->orderBy('name')
+        ->paginate(3);
 
         return view('cities.index', compact('cities'));
     }
@@ -28,6 +36,7 @@ class CityController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'zip_code' => ['required', 'string', 'max:20'],
             'county_id' => ['required', 'exists:counties,id'],
+            'population' => ['required'],
         ]);
 
         City::create($validated);
@@ -44,7 +53,9 @@ class CityController extends Controller
 
     public function edit(City $city)
     {
-        return view('cities.edit', compact('city'));
+        $counties = County::all();
+
+        return view('cities.edit', compact('city', 'counties'));
     }
 
     public function update(Request $request, City $city)
@@ -53,6 +64,7 @@ class CityController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'zip_code' => ['required', 'string', 'max:20'],
             'county_id' => ['required', 'exists:counties,id'],
+            'population' => ['required'],
         ]);
 
         $city->update($validated);

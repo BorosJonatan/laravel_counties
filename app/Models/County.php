@@ -14,7 +14,7 @@ class County extends Model
     /**
      * Tömegesen kitölthető mezők.
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'coatofarms'];
 
     /**
      * Egy megyéhez több város tartozhat.

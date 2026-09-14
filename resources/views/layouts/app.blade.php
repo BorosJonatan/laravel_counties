@@ -137,26 +137,28 @@
             color: #6b7280;
         }
 
-        .film-poster {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-            margin-bottom: 1rem;
-            object-fit: cover;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        .city-container{
+            display: flex;
+        }
+        .county-show{
+            display:flex;
+            justify-content: space-between;
+        }
+        .paginator {
+            margin: 3em auto 1em auto;
+            width: fit-content;
+            text-align: center;
+            color: black;
         }
 
-        .film-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
+        .paginator svg {
+            color: black;
+            width: 1em;
+            height: 1em;
+            margin: 0 0.5em;
+            cursor: pointer;
         }
 
-        .film-meta p {
-            margin: 0.4rem 0;
-        }
     </style>
 </head>
 <body>
